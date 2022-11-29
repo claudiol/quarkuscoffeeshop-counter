@@ -31,7 +31,8 @@ public class PlaceOrderCommand {
 
   @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
   public PlaceOrderCommand(
-          @JsonProperty("id") final String id,
+          //@JsonProperty("id") final String id,
+          @JsonProperty("orderId") final String id,
           @JsonProperty("orderSource") final OrderSource orderSource,
           @JsonProperty("location") final Location location,
           @JsonProperty("loyaltyMemberId") final String loyaltyMemberId,
