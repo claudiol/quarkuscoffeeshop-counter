@@ -15,7 +15,8 @@ import java.util.Optional;
 @RegisterForReflection
 public class PlaceOrderCommand {
 
-  private final String id;
+  //private final String id;
+  private final String orderId;
 
   private final OrderSource orderSource;
 
@@ -32,13 +33,13 @@ public class PlaceOrderCommand {
   @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
   public PlaceOrderCommand(
           //@JsonProperty("id") final String id,
-          @JsonProperty("orderId") final String id,
+          @JsonProperty("orderId") final String orderId,
           @JsonProperty("orderSource") final OrderSource orderSource,
           @JsonProperty("location") final Location location,
           @JsonProperty("loyaltyMemberId") final String loyaltyMemberId,
           @JsonProperty("baristaLineItems") Optional<List<CommandItem>> baristaLineItems,
           @JsonProperty("kitchenLineItems") Optional<List<CommandItem>> kitchenLineItems) {
-    this.id = id;
+    this.orderId = orderId;
     this.orderSource = orderSource;
     this.location = location;
     this.loyaltyMemberId = loyaltyMemberId;
@@ -58,7 +59,8 @@ public class PlaceOrderCommand {
   @Override
   public String toString() {
     return "PlaceOrderCommand{" +
-            "id='" + id + '\'' +
+            //"id='" + id + '\'' +
+            "orderId='" + orderId + '\'' +
             ", orderSource=" + orderSource +
             ", location=" + location +
             ", loyaltyMemberId='" + loyaltyMemberId + '\'' +
@@ -73,12 +75,12 @@ public class PlaceOrderCommand {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     PlaceOrderCommand that = (PlaceOrderCommand) o;
-    return Objects.equals(id, that.id) && orderSource == that.orderSource && location == that.location && Objects.equals(loyaltyMemberId, that.loyaltyMemberId) && Objects.equals(baristaLineItems, that.baristaLineItems) && Objects.equals(kitchenLineItems, that.kitchenLineItems) && Objects.equals(timestamp, that.timestamp);
+    return Objects.equals(orderId, that.orderId) && orderSource == that.orderSource && location == that.location && Objects.equals(loyaltyMemberId, that.loyaltyMemberId) && Objects.equals(baristaLineItems, that.baristaLineItems) && Objects.equals(kitchenLineItems, that.kitchenLineItems) && Objects.equals(timestamp, that.timestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, orderSource, location, loyaltyMemberId, baristaLineItems, kitchenLineItems, timestamp);
+    return Objects.hash(orderId, orderSource, location, loyaltyMemberId, baristaLineItems, kitchenLineItems, timestamp);
   }
 
   public Optional<List<CommandItem>> getBaristaLineItems() {
@@ -94,7 +96,7 @@ public class PlaceOrderCommand {
   }
 
   public String getId() {
-    return id;
+    return orderId;
   }
 
   public OrderSource getOrderSource() {
