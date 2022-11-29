@@ -32,14 +32,14 @@ public class PlaceOrderCommand {
 
   @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
   public PlaceOrderCommand(
-          //@JsonProperty("id") final String id,
-          @JsonProperty("orderId") final String orderId,
+          @JsonProperty("id") final String id,
+          //@JsonProperty("orderId") final String orderId,
           @JsonProperty("orderSource") final OrderSource orderSource,
           @JsonProperty("location") final Location location,
           @JsonProperty("loyaltyMemberId") final String loyaltyMemberId,
           @JsonProperty("baristaLineItems") Optional<List<CommandItem>> baristaLineItems,
           @JsonProperty("kitchenLineItems") Optional<List<CommandItem>> kitchenLineItems) {
-    this.orderId = orderId;
+    this.orderId = id;
     this.orderSource = orderSource;
     this.location = location;
     this.loyaltyMemberId = loyaltyMemberId;
@@ -60,7 +60,7 @@ public class PlaceOrderCommand {
   public String toString() {
     return "PlaceOrderCommand{" +
             //"id='" + id + '\'' +
-            "orderId='" + orderId + '\'' +
+            "id='" + orderId + '\'' +
             ", orderSource=" + orderSource +
             ", location=" + location +
             ", loyaltyMemberId='" + loyaltyMemberId + '\'' +
